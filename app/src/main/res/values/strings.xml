@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">RandomRecipes</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="meal_here">Meal Here</string>
+    <string name="some_instructions">Some instructions</string>
+    <string name="hello_welcome_to_random_recipes">Hello %1$s, Welcome to Random Recipes</string>
+    <string name="nickname">Nickname</string>
+    <string name="let_s_go">Let\'s go!</string>
+    <string name="what_s_your_nickname">What\'s your nickname?</string>
+    <string name="random_recipes">Random Recipes \n</string>
+    <string name="hello_welcome_to">"Hello, welcome to "</string>
 </resources>

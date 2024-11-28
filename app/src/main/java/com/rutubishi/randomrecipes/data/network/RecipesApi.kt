@@ -1,6 +1,7 @@
 package com.rutubishi.randomrecipes.data.network
 
 import com.rutubishi.randomrecipes.data.model.CategoriesDto
+import com.rutubishi.randomrecipes.data.model.MealDto
 import com.rutubishi.randomrecipes.data.model.MealsDto
 import com.rutubishi.randomrecipes.util.AppResource
 import io.ktor.client.HttpClient
@@ -53,7 +54,7 @@ suspend fun getMealsByCategory(category: String): AppResource<MealsDto> =
         AppResource.Error(e)
     }
 
-suspend fun getMealDetails(mealId: String): AppResource<MealsDto> =
+suspend fun getMealDetails(mealId: String): AppResource<MealDto> =
     try {
         AppResource.Success(
             data = recipesApiClient.get("lookup.php?i=$mealId").body(),

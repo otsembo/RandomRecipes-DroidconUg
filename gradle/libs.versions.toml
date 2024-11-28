@@ -11,6 +11,8 @@ composeBom = "2024.04.01"
 ktor = "3.0.1"
 kt-serialization = "1.7.3"
 nav = "2.8.4"
+coil = "3.0.3"
+mockito = "5.4.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,6 +35,10 @@ ktor-cn = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "k
 ktor-serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kt-serialization" }
 compose-nav = { module = "androidx.navigation:navigation-compose", version.ref = "nav" }
+coil-image = { module = "io.coil-kt.coil3:coil-compose", version.ref ="coil" }
+coil-network = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
+mock = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito" }
+mock-android = { module = "org.mockito:mockito-android", version.ref = "mockito" }
 
 
 [plugins]

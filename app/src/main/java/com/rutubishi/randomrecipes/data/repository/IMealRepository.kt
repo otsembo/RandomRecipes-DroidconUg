@@ -1,6 +1,7 @@
 package com.rutubishi.randomrecipes.data.repository
 
 import com.rutubishi.randomrecipes.data.model.CategoriesDto
+import com.rutubishi.randomrecipes.data.model.MealDto
 import com.rutubishi.randomrecipes.data.model.MealsDto
 import com.rutubishi.randomrecipes.data.network.getMealCategories
 import com.rutubishi.randomrecipes.data.network.getMealDetails
@@ -10,8 +11,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 
-class MealRepository {
-    fun fetchMealsByCategory(category: String): Flow<AppResource<MealsDto>> =
+class MealRepository : IMealRepository {
+    override fun fetchMealsByCategory(category: String): Flow<AppResource<MealsDto>> =
         flow {
             emit(AppResource.Loading())
             val response = getMealsByCategory(category)
@@ -20,7 +21,7 @@ class MealRepository {
             emit(AppResource.Error(it))
         }
 
-    fun fetchMealDetails(mealId: String): Flow<AppResource<MealsDto>> =
+    override fun fetchMealDetails(mealId: String): Flow<AppResource<MealDto>> =
         flow {
             emit(AppResource.Loading())
             val response = getMealDetails(mealId)
@@ -29,7 +30,7 @@ class MealRepository {
             emit(AppResource.Error(it))
         }
 
-    fun fetchMealCategories(): Flow<AppResource<CategoriesDto>> =
+    override fun fetchMealCategories(): Flow<AppResource<CategoriesDto>> =
         flow {
             emit(AppResource.Loading())
             val response = getMealCategories()
@@ -37,4 +38,12 @@ class MealRepository {
         }.catch {
             emit(AppResource.Error(it))
         }
+}
+
+interface IMealRepository {
+    fun fetchMealsByCategory(category: String): Flow<AppResource<MealsDto>>
+
+    fun fetchMealDetails(mealId: String): Flow<AppResource<MealDto>>
+
+    fun fetchMealCategories(): Flow<AppResource<CategoriesDto>>
 }

@@ -9,7 +9,5 @@ sealed class AppResource<T> {
         val error: Throwable,
     ) : AppResource<T>()
 
-    data class Loading<T>(
-        val data: T? = null,
-    ) : AppResource<T>()
+    class Loading<T> : AppResource<T>()
 }

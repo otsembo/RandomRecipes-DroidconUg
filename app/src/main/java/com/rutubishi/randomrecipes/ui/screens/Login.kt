@@ -1,5 +1,6 @@
 package com.rutubishi.randomrecipes.ui.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,13 +18,15 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
@@ -32,15 +35,31 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.rutubishi.randomrecipes.R
 import com.rutubishi.randomrecipes.data.repository.MealRepository
 import com.rutubishi.randomrecipes.ui.theme.RandomRecipesTheme
+import kotlinx.serialization.Serializable
+
+@Serializable
+data object LoginRoute
 
 @Composable
 fun Login(
     modifier: Modifier = Modifier,
+    navHostController: NavHostController = rememberNavController(),
     vm: LoginVM,
 ) {
+    val context = LocalContext.current
+    val loginUiState by vm.loginUiState.collectAsState()
+
+    LaunchedEffect(loginUiState.error) {
+        loginUiState.error?.let {
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        }
+    }
+
     Column(
         modifier =
             modifier
@@ -49,8 +68,6 @@ fun Login(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        var nickname by remember { mutableStateOf("") }
-
         Image(
             painter = painterResource(R.drawable.diet),
             modifier = Modifier.size(128.dp),
@@ -62,7 +79,7 @@ fun Login(
         Text(
             text =
                 buildAnnotatedString {
-                    append("Hello, welcome to ")
+                    append(stringResource(R.string.hello_welcome_to))
                     withStyle(
                         SpanStyle(
                             color = MaterialTheme.colorScheme.tertiary,
@@ -70,9 +87,9 @@ fun Login(
                             fontWeight = FontWeight.Bold,
                         ),
                     ) {
-                        append("Random Recipes \n")
+                        append(stringResource(R.string.random_recipes))
                     }
-                    append("What's your nickname?")
+                    append(stringResource(R.string.what_s_your_nickname))
                 },
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,
@@ -81,9 +98,10 @@ fun Login(
         Spacer(modifier = Modifier.height(16.dp))
 
         TextField(
-            value = nickname,
-            onValueChange = { nickname = it },
-            label = { Text(text = "Nickname") },
+            modifier = Modifier.testTag("username_input"),
+            value = loginUiState.username ?: "",
+            onValueChange = { vm.updateUsername(it) },
+            label = { Text(text = stringResource(R.string.nickname)) },
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -91,12 +109,12 @@ fun Login(
         OutlinedButton(
             modifier = Modifier.fillMaxWidth(0.75f),
             onClick = {
-                vm.login(nickname)
+                vm.login(navHostController)
             },
             colors = ButtonDefaults.outlinedButtonColors().copy(contentColor = MaterialTheme.colorScheme.primary),
             shape = RoundedCornerShape(percent = 20),
         ) {
-            Text("Let's go!")
+            Text(stringResource(R.string.let_s_go))
         }
     }
 }
