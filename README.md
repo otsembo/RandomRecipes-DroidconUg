@@ -67,12 +67,12 @@ cd composeApp
 
 Since the original app already uses **Jetpack Compose**, the focus of migration is:
 
-| Aspect              | Before (Android)             | After (Multiplatform)          |
-|---------------------|------------------------------|---------------------------------|
-| UI                  | Jetpack Compose               | Compose Multiplatform           |
-| Logic               | Kotlin                        | Shared Kotlin (commonMain)     |
-| Navigation          | Android Navigation Compose    | Custom/shared navigation logic  |
-| Platform Support    | Android only                  | Android + Web (Wasm)     |
+| Aspect           | Before (Android)           | After (Multiplatform)          |
+|------------------|----------------------------|--------------------------------|
+| UI               | Jetpack Compose            | Compose Multiplatform          |
+| Logic            | Kotlin                     | Shared Kotlin (commonMain)     |
+| Navigation       | Android Navigation Compose | Custom/shared navigation logic |
+| Platform Support | Android only               | Android + Web (Wasm)           |
 
 Check out the `starter` branch for the original Compose code, and `final` for the multiplatform refactor.
 
@@ -99,12 +99,6 @@ To run shared tests:
 ## 🙌 Contributions
 
 Got an idea, improvement, or bug fix? Feel free to open an issue or submit a PR!
-
----
-
-## 📄 License
-
-MIT License
 
 ---
 
