@@ -80,7 +80,9 @@ Check out the `starter` branch for the original Compose code, and `final` for th
 
 ## 📸 Screenshots
 
-
+| ![web1](screens/web1.png)         | ![web2](screens/web2.png)         | ![web3](screens/web3.png)         |
+|-----------------------------------|-----------------------------------|-----------------------------------|
+| ![android1](screens/android1.png) | ![android2](screens/android2.png) | ![android3](screens/android3.png) |
 
 ---
 
