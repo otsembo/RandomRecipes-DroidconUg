@@ -13,6 +13,9 @@ kt-serialization = "1.7.3"
 nav = "2.8.4"
 coil = "3.0.3"
 mockito = "5.4.0"
+compose-plugin = "1.7.1"
+common-nav = "2.8.0-alpha10"
+coroutinesTest = "1.9.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -35,10 +38,13 @@ ktor-cn = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "k
 ktor-serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kt-serialization" }
 compose-nav = { module = "androidx.navigation:navigation-compose", version.ref = "nav" }
+common-compose-nav = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref="common-nav"}
 coil-image = { module = "io.coil-kt.coil3:coil-compose", version.ref ="coil" }
 coil-network = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
+coil-ktor-network = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
 mock = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito" }
 mock-android = { module = "org.mockito:mockito-android", version.ref = "mockito" }
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutinesTest" }
 
 
 [plugins]
@@ -46,3 +52,5 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
