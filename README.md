@@ -108,6 +108,4 @@ MIT License
 
 ## 👤 Author
 
-Crafted by [otsembo] with  ☕ and 🍜.
-
-```
+Crafted by [otsembo](https://github.com/otsembo) with  ☕ and 🍜.
